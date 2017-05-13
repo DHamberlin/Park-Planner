@@ -7,7 +7,7 @@ angular.module('app.services', [])
       method: 'GET',
       url: '/parks'
     }).then(function (resp) {
-      console.log(resp.data);
+      // console.log(resp.data);
       return resp.data;
     });
   };
@@ -26,7 +26,7 @@ angular.module('app.services', [])
         'parkId': parkID
       },
     }).then(function (resp) {
-      console.log(resp.data);
+      // console.log(resp.data);
       return resp.data;
     })
     .catch(function (err) {
@@ -56,6 +56,19 @@ angular.module('app.services', [])
     });
   };
 
+  var getOptimizedSched = function (ridesArr) {
+    return $http({
+      method: 'GET',
+      url: 'optimize',
+      headers: {
+        'rides': JSON.stringify(ridesArr)
+      }
+    }).then(function(resp) {
+      console.log('here\'s the response: ', resp);
+      return resp.data;
+    });
+  };
+
   var getRideQueueAndParkId = function() {
     return {rideQueue: rideQueue, parkId: parkId};
   };
@@ -64,6 +77,7 @@ angular.module('app.services', [])
     getParkRides: getParkRides,
     setRideQueueAndParkId: setRideQueueAndParkId,
     getRideQueueAndParkId: getRideQueueAndParkId,
-    getTimes: getTimes
+    getTimes: getTimes,
+    getOptimizedSched: getOptimizedSched,
   };
 });

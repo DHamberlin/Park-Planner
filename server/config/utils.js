@@ -20,22 +20,22 @@ let utils = {
       if(atts.isActive) {
         if(acc[atts.hour]) {
           acc[atts.hour].push(atts.waitTime);
-          console.log(acc);
+          // console.log(acc);
           return acc;
         } else {
           acc[atts.hour] = [atts.waitTime];
-          console.log(acc);
+          // console.log(acc);
           return acc;
         }
       } else {
         if(acc[atts.hour]) {
           acc[atts.hour].push(null);
-          console.log(acc);
+          // console.log(acc);
 
           return acc;
         } else {
           acc[atts.hour] = [null];
-          console.log(acc);
+          // console.log(acc);
 
           return acc;
         }

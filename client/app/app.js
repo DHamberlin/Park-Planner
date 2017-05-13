@@ -2,6 +2,7 @@ angular
   .module('app', [
       'app.parks',
       'app.rides',
+      'app.schedule',
       'app.services',
       'ngRoute',
       'chart.js'
@@ -20,6 +21,10 @@ angular
       .when('/rideslist/:id', {
         templateUrl: 'app/rides/rides-list-details.html',
         controller: 'RidesController'
+      })
+      .when('/schedule/:id', {
+        templateUrl: 'app/schedule/schedule.html',
+        controller: 'ScheduleController'
       })
       .otherwise({
         redirectTo: '/'

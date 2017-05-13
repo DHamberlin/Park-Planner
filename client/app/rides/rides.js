@@ -42,6 +42,11 @@ angular.module('app.rides', []).controller('RidesController', function($scope, $
     $scope.rideQueue = data.rideQueue;
   };
 
+  $scope.getOptimizedSchedAndChangePage = function() {
+    Rides.setRideQueueAndParkId($scope.rideList, $routeParams.id);
+    $location.path(`/schedule/${$routeParams.id}`);
+  };
+
   $scope.parkId = $routeParams.id;
 
   $scope.getRideQueueAndParkId();
@@ -56,7 +61,7 @@ angular.module('app.rides', []).controller('RidesController', function($scope, $
         return rideObj;
       }
     });
-    console.log(temp);
+    // console.log(temp);
     $scope.rides = temp;
   });
 
@@ -84,8 +89,8 @@ angular.module('app.rides', []).controller('RidesController', function($scope, $
           $scope.times.push(tempArr[j][1]);
         }
 
-        console.log('scope.labels',$scope.labels);
-        console.log('scope.times',$scope.times);
+        // console.log('scope.labels',$scope.labels);
+        // console.log('scope.times',$scope.times);
 
         $scope.rideQueue[i].data = $scope.times;
         $scope.rideQueue[i].labels = $scope.labels;
@@ -112,7 +117,7 @@ angular.module('app.rides', []).controller('RidesController', function($scope, $
       xAxes: [
         {
           position: 'bottom',
-          sclaeLabel: {
+          scaleLabel: {
             display: true,
             labelString: 'Time'
           }

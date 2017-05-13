@@ -42,7 +42,7 @@ module.exports = (app, express) => {
   });
 
   app.get('/rideList', (req, res) => {
-    console.log(req.headers.rides);
+    console.log('rideList headers.rides: ', req.headers.rides);
     helpers.returnWaitTimes(req.headers.rides)
       .then(data => {
       res.status(200).send(data);
@@ -51,5 +51,14 @@ module.exports = (app, express) => {
         res.status(404).send(err);
         console.error('GET Rides Error:', err);
       });
+  });
+
+  app.get('/optimize', (req, res) => {
+    console.log('/optimize req.headers.rides: ', req.headers.rides);    
+    res.send('yo')
+    helpers.optimizeSchedule(req.headers.rides, req.headers.start)
+      // .then(schedule => {
+      //   res.send(schedule);
+      // });
   });
 };
